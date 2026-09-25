@@ -17,8 +17,18 @@ export function Header() {
       <span className={`${estilos.progreso} progreso`} aria-hidden />
       <div className={`${estilos.barra} contenido`}>
         <a href={ancla(SECCIONES.inicio)} className={estilos.marca} aria-label={`${sitio.nombre}, inicio`}>
-          <span className={`${estilos.nombre} serif`}>MYS SPA</span>
-          <span className={`${estilos.tagline} caps`}>{sitio.tagline}</span>
+          <img
+            className={estilos.monograma}
+            src="/img/monograma-192.png"
+            alt=""
+            width={36}
+            height={36}
+            decoding="async"
+          />
+          <span className={estilos.nombres}>
+            <span className={`${estilos.nombre} serif`}>MYS SPA</span>
+            <span className={`${estilos.tagline} caps`}>{sitio.tagline}</span>
+          </span>
         </a>
 
         <nav className={estilos.menuEscritorio} aria-label="Secciones">

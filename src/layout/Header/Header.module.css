@@ -30,9 +30,22 @@
 
 .marca {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--tinta-suave);
+}
+
+/* Monograma MS del manual, recortado del mármol. Provisional hasta tener el vector. */
+.monograma {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.nombres {
+  display: flex;
   flex-direction: column;
   gap: 2px;
-  color: var(--tinta-suave);
 }
 
 .nombre {
@@ -95,6 +108,11 @@
   .barra {
     padding-inline: var(--gutter);
     max-width: none;
+  }
+
+  .monograma {
+    width: 40px;
+    height: 40px;
   }
 
   .nombre {

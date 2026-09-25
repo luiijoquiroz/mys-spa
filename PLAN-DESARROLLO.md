@@ -23,6 +23,7 @@ infra en `clients-iac/sites/mys-spa/prod`, deploy con `gh-actions/deploy-static-
 | D8 | Mayrelis Alvarez: confirmar ortografía (se escribió también «Mairelys»), formación y años de experiencia | pendiente | sección Equipo |
 | D9 | Fotos propias (ver §6). Mientras no existan, quedan las de referencia de Pexels con su crédito | pendiente | `public/img/` |
 | D10 | Texto del manifiesto «La piel no se maquilla: se cuida. Lo demás es luz que llega sola.» ¿se mantiene? | propuesto | franja 3 |
+| D11 | **Logo en vector** (SVG o PNG con transparencia) del imagotipo y del monograma MS, pedirlo a Brivark. Hoy el monograma de la cabecera y el favicon están recortados del JPG del PDF por color (`public/img/monograma*.png`, `favicon.png`, `apple-touch-icon.png`); se ven bien hasta 40 px, no más. Con el vector se reemplazan esos archivos y el logo redondo del pie | pendiente | cabecera, favicon, pie |
 
 Sin D1 no se puede aplicar Terraform. Todo lo demás se puede programar con `[CORCHETES]` y
 reemplazar después: el sitio lee sus datos de `src/data/`.
@@ -184,7 +185,7 @@ documentada en el tfvars.
 |---|---|---|
 | 2026-09-25 | Código creado (primero en `mys-spa-web/`, movido a la raíz del repo el mismo día) (React 19 + Vite 7 + TS estricto, pnpm, CSS Modules, Vitest). Portadas móvil y escritorio portadas completas desde `diseno/v2/`; parallax en CSS puro; fotos de referencia optimizadas en webp + jpg; formulario que abre WhatsApp; JSON-LD `BeautySalon`. `typecheck`, `lint`, `test` (11) y `build` en verde; `pnpm audit` sin vulnerabilidades. Git en `main` | ✓ código local |
 | — | Revisión visual en navegador (Chrome móvil y escritorio, Firefox para el fallback) y Lighthouse | pendiente |
-| — | Remoto `git@github.com:luiijoquiroz/mys-spa.git` agregado el 2026-09-25 (repositorio vacío en GitHub); primer commit y push | pendiente |
+| — | Remoto `git@github.com:luiijoquiroz/mys-spa.git` agregado el 2026-09-25 (repositorio vacío en GitHub); primer commit y push a `main` | ✓ 2026-09-25 |
 | — | Terraform, dominio, workflow, primer deploy | pendiente de D1 |
 
 ## 9. Orden de trabajo sugerido (una sesión por paso)
