@@ -1,0 +1,154 @@
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(240, 239, 237, 0.9);
+  border-bottom: 1px solid var(--linea-suave);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.progreso {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 100%;
+  background: var(--mineral-ink);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.barra {
+  height: var(--altura-cabecera);
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--tinta-suave);
+}
+
+.nombre {
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: var(--tinta-suave);
+}
+
+.tagline {
+  font-size: 8px;
+  letter-spacing: 0.26em;
+  color: var(--mineral-ink);
+}
+
+.menuEscritorio {
+  display: none;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reservar {
+  display: none;
+}
+
+.hamburguesa {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tinta);
+}
+
+.menuMovil {
+  display: none;
+  flex-direction: column;
+  padding: 8px 20px 24px;
+  border-top: 1px solid var(--linea-suave);
+}
+
+.menuAbierto {
+  display: flex;
+}
+
+.menuMovil a {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  font-size: 26px;
+  color: var(--tinta);
+  border-bottom: 1px solid var(--linea-suave);
+}
+
+@media (min-width: 1024px) {
+  .barra {
+    padding-inline: var(--gutter);
+    max-width: none;
+  }
+
+  .nombre {
+    font-size: 28px;
+    letter-spacing: 0.18em;
+  }
+
+  .tagline {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+  }
+
+  .menuEscritorio {
+    display: flex;
+    gap: 40px;
+  }
+
+  .menuEscritorio a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--tinta-suave);
+  }
+
+  .menuEscritorio a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 10px;
+    height: 1px;
+    background: var(--mineral-ink);
+    transition: right 0.45s var(--suave);
+  }
+
+  .menuEscritorio a:hover {
+    color: var(--tinta);
+  }
+
+  .menuEscritorio a:hover::after {
+    right: 0;
+  }
+
+  .reservar {
+    display: inline-flex;
+    min-height: 44px;
+    padding: 0 22px;
+  }
+
+  .hamburguesa,
+  .menuMovil {
+    display: none;
+  }
+}

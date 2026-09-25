@@ -1,0 +1,32 @@
+.cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.claro :global(.etiqueta) {
+  color: var(--claro-2);
+}
+
+.claro :global(.titulo) {
+  color: var(--marmol);
+}
+
+.claro :global(.titulo em) {
+  color: var(--claro-2);
+}
+
+.claro :global(.parrafo) {
+  color: var(--claro);
+}
+
+@media (min-width: 1024px) {
+  .cabecera {
+    gap: 14px;
+  }
+
+  /* En escritorio las dos líneas van seguidas; el salto es solo de móvil. */
+  .salto {
+    display: none;
+  }
+}

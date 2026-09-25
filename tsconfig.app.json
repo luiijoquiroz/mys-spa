@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Modo estricto: no relajar estas opciones para "que compile" */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    /* Índices y accesos a arreglos devuelven `T | undefined`: obliga a
+       contemplar el caso vacío en lugar de confiar en él. */
+    "noUncheckedIndexedAccess": true
+    /* Nota: `exactOptionalPropertyTypes` queda fuera a propósito. No forma parte
+       de `strict` y choca con los tipos de framer-motion y de CSS Modules, que
+       aceptan `undefined` en props opcionales. Activarlo obligaría a envolver
+       cada prop en spreads condicionales sin ganar seguridad real. */
+  },
+  "include": ["src"]
+}

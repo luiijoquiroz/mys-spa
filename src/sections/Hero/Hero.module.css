@@ -1,0 +1,113 @@
+.hero {
+  position: relative;
+  height: clamp(640px, 88svh, 760px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--marmol);
+  background: #c9d2d4;
+}
+
+.contenido {
+  position: relative;
+  padding: 0 var(--gutter) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titular {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.etiqueta {
+  font-size: 10px;
+  color: var(--claro);
+}
+
+.h1 {
+  font-size: clamp(48px, 13.8vw, 58px);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+}
+
+.italica {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.descripcion {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #e6ecee;
+  max-width: 320px;
+}
+
+/* En móvil los botones van debajo del hero, sobre el mármol (sección Acciones). */
+.acciones {
+  display: none;
+}
+
+.credito {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 239, 237, 0.7);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: clamp(760px, 92svh, 900px);
+  }
+
+  .contenido {
+    padding-bottom: 72px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .titular {
+    gap: 22px;
+  }
+
+  .etiqueta {
+    font-size: 12px;
+  }
+
+  .h1 {
+    font-size: clamp(88px, 8vw, 116px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+
+  .lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-bottom: 10px;
+  }
+
+  .descripcion {
+    font-size: 18px;
+    max-width: none;
+  }
+
+  .acciones {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .credito {
+    right: 40px;
+    bottom: 24px;
+    font-size: 10px;
+  }
+}

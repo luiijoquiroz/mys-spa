@@ -1,0 +1,48 @@
+/* Tokens del Manual de Identidad Visual de Mys Spa (Brivark Media, sep. 2026) más los
+   derivados que hicieron falta para cumplir contraste. Ver PLAN-DESARROLLO.md §2. */
+:root {
+  /* Fondo de mármol y superficies */
+  --marmol: #f0efed;
+  --marmol-2: #e8e7e5;
+  --blanco: #fafaf8;
+
+  /* Azul mineral del logotipo y sus derivados. #7A9099 solo para display ≥ 24 px,
+     numerales y líneas: sobre mármol da 3.4:1 y no alcanza para texto pequeño. */
+  --mineral: #7a9099;
+  --mineral-sub: #89a2ab;
+  --mineral-ink: #5b727c;
+  --profundo: #3c4f57;
+
+  /* Texto */
+  --tinta: #33474f;
+  --tinta-suave: #4f6570;
+  --gris-texto: #5a6a70;
+  --claro: #dce3e5;
+  --claro-2: #a9bcc2;
+  --claro-3: #c3d0d4;
+
+  /* Líneas */
+  --linea: #c9d2d4;
+  --linea-suave: #d9dedf;
+  --linea-oscura: #5b727c;
+
+  /* Tipografía */
+  --serif: 'Cormorant Garamond', 'Cormorant', 'Garamond', Georgia, serif;
+  --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Ritmo */
+  --gutter: 24px;
+  --ancho-max: 1200px;
+  --radio-pildora: 999px;
+  --altura-cabecera: 64px;
+
+  /* Curvas de movimiento */
+  --suave: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: clamp(48px, 8.33vw, 120px);
+    --altura-cabecera: 80px;
+  }
+}

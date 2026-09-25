@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dirección B · Aurora suave</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+body { margin: 0; background: #F3F7F6; font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif; color: #223338; -webkit-font-smoothing: antialiased; }
+a { color: #223338; text-decoration: none; } a:hover { color: #2F6F6A; }
+h1, h2, h3, p { margin: 0; font-weight: 400; }
+.display { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144, 'SOFT' 60; }
+.caps { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+.aurora { position: absolute; inset: -20%; background: radial-gradient(ellipse 45% 40% at 20% 25%, #DDEFE8 0%, rgba(221, 239, 232, 0) 70%), radial-gradient(ellipse 40% 35% at 78% 20%, #E3ECF7 0%, rgba(227, 236, 247, 0) 70%), radial-gradient(ellipse 45% 40% at 70% 80%, #F4EAF2 0%, rgba(244, 234, 242, 0) 70%), radial-gradient(ellipse 35% 30% at 20% 85%, #FBEFE4 0%, rgba(251, 239, 228, 0) 70%); animation: respirar 40s ease-in-out infinite alternate; }
+@keyframes respirar { from { transform: translate(0, 0) scale(1); } to { transform: translate(-3%, 2%) scale(1.06); } }
+.vidrio { background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); }
+.pill { height: 54px; padding: 0 28px; display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; font-size: 15px; font-weight: 500; }
+.chip { height: 44px; padding: 0 20px; display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; font-size: 14px; font-weight: 500; background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(34, 51, 56, 0.1); }
+.foto { filter: grayscale(0.6) brightness(1.08) contrast(0.96); }
+.velo { position: absolute; inset: 0; background: #BFE3DC; mix-blend-mode: soft-light; opacity: 0.9; }
+.entra { animation: entrar 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes entrar { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .aurora, .entra { animation: none; } }
+</style>
+</helmet>
+
+<div style="position: relative; width: 1440px; height: 1320px; overflow: clip; background: #F3F7F6; display: flex; flex-direction: column;">
+  <div class="aurora" aria-hidden="true"></div>
+
+  <!-- Cabecera flotante -->
+  <header style="position: relative; padding: 24px 64px 0; display: flex; justify-content: center;">
+    <div class="vidrio" style="height: 60px; padding: 0 12px 0 20px; border-radius: 999px; display: flex; align-items: center; gap: 36px;">
+      <a href="#" style="display: flex; align-items: center; gap: 10px;">
+        <img src="/_blob/fca191d2427e1ba9bde882bdd7b49228" alt="" style="width: 34px; height: 34px; border-radius: 999px; object-fit: cover;">
+        <span class="display" style="font-size: 20px; letter-spacing: 0.06em;">MYS SPA</span>
+      </a>
+      <nav aria-label="Secciones" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
+        <a href="#">Tratamientos</a><a href="#">Método</a><a href="#">Equipo</a><a href="#">Dónde</a>
+      </nav>
+      <a href="#" class="pill" style="height: 42px; padding: 0 20px; background: #2F6F6A; color: #F3F7F6; font-size: 14px;">Reservar</a>
+    </div>
+  </header>
+
+  <!-- Hero centrado -->
+  <section style="position: relative; padding: 88px 64px 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center;">
+    <p class="caps entra" style="color: #2F6F6A;">Estética facial en Providencia</p>
+    <h1 class="display entra" style="font-size: 124px; line-height: 0.94; letter-spacing: -0.03em; font-weight: 300; max-width: 1100px; animation-delay: 0.1s;">Piel fresca,<br><em style="font-style: italic; font-weight: 300; color: #2F6F6A;">todos los días.</em></h1>
+    <p class="entra" style="font-size: 19px; line-height: 1.55; color: #4B5B60; max-width: 560px; animation-delay: 0.2s;">Limpiezas, exfoliaciones y peelings con evaluación previa. Los procedimientos médicos, con la Dra. Camila Carrazco.</p>
+    <div class="entra" style="display: flex; gap: 12px; animation-delay: 0.3s;">
+      <a href="#" class="pill" style="background: #2F6F6A; color: #F3F7F6;">Reservar por WhatsApp</a>
+      <a href="#" class="pill vidrio">Ver tratamientos</a>
+    </div>
+  </section>
+
+  <!-- Composición: foto orgánica + tarjetas de vidrio -->
+  <section style="position: relative; padding: 24px 64px 0; display: grid; grid-template-columns: 360px 520px 360px; gap: 24px; justify-content: center; align-items: center;">
+    <div class="vidrio entra" style="border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; animation-delay: 0.35s;">
+      <p class="caps" style="color: #2F6F6A;">Cómo trabajamos</p>
+      <h2 class="display" style="font-size: 34px; line-height: 1.05; font-weight: 400;">Evaluación primero, tratamiento después.</h2>
+      <p style="font-size: 15px; line-height: 1.55; color: #4B5B60;">Miramos tu piel con luz, conversamos qué buscas y recién ahí definimos el protocolo.</p>
+    </div>
+    <div class="entra" style="position: relative; height: 520px; border-radius: 48% 52% 46% 54% / 55% 45% 55% 45%; overflow: clip; background: #DDEFE8; animation-delay: 0.3s;">
+      <img class="foto" src="/_blob/ffaa103d62424d477ed57eff373b14b8" alt="Rostro con la piel fresca, de cerca" style="width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%; display: block;">
+      <div class="velo"></div>
+    </div>
+    <div class="vidrio entra" style="border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; animation-delay: 0.4s;">
+      <p class="caps" style="color: #2F6F6A;">Respaldo médico</p>
+      <h2 class="display" style="font-size: 34px; line-height: 1.05; font-weight: 400;">Dra. Camila Carrazco</h2>
+      <p style="font-size: 15px; line-height: 1.55; color: #4B5B60;">Aplica el ácido hialurónico y las evaluaciones que lo requieran. [ESPECIALIDAD · REGISTRO]</p>
+    </div>
+  </section>
+
+  <!-- Tratamientos como chips -->
+  <section style="position: relative; padding: 56px 64px 0; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <p class="caps" style="color: #4B5B60;">Tratamientos · valores en la evaluación</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+      <a href="#" class="chip">Limpieza facial profunda <span style="color: #2F6F6A;">[PRECIO]</span></a>
+      <a href="#" class="chip">Exfoliación <span style="color: #2F6F6A;">[PRECIO]</span></a>
+      <a href="#" class="chip">Peeling químico <span style="color: #2F6F6A;">[PRECIO]</span></a>
+      <a href="#" class="chip" style="background: #2F6F6A; color: #F3F7F6; border-color: #2F6F6A;">Ácido hialurónico · médico <span style="opacity: 0.8;">[PRECIO]</span></a>
+    </div>
+    <p style="font-size: 14px; color: #4B5B60;">Luis Thayer Ojeda 157, Providencia · Metro Tobalaba, salida D · [@INSTAGRAM]</p>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

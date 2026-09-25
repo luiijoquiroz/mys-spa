@@ -1,0 +1,130 @@
+.equipo {
+  position: relative;
+  margin-top: 32px;
+  padding: 88px 28px 80px;
+  background: var(--profundo);
+  color: var(--marmol);
+  border-radius: 120px 120px 0 0;
+}
+
+.equipo :global(.marco-doble) {
+  border-radius: 108px 108px 0 0;
+}
+
+.contenido {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.soloEscritorio {
+  display: none;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.persona {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.persona + .persona {
+  border-top: 1px solid var(--linea-oscura);
+}
+
+.retrato {
+  width: 108px;
+  height: 136px;
+  flex-shrink: 0;
+  --radio: 54px 54px 8px 8px;
+}
+
+.retrato > div {
+  border: 1px solid var(--mineral);
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nombre {
+  font-size: 28px;
+  line-height: 1.08;
+  color: var(--marmol);
+}
+
+.cargo {
+  font-size: 10px;
+  color: var(--claro-2);
+}
+
+.descripcion {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--claro);
+}
+
+@media (min-width: 1024px) {
+  .equipo {
+    margin-top: 0;
+    padding: 140px var(--gutter) 128px;
+    border-radius: 240px 240px 0 0;
+  }
+
+  .equipo :global(.marco-doble) {
+    border-radius: 220px 220px 0 0;
+  }
+
+  .contenido {
+    max-width: none;
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    gap: 96px;
+    align-items: start;
+  }
+
+  .soloEscritorio {
+    display: inline;
+  }
+
+  .lista {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .persona {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--linea-oscura);
+    background: rgba(79, 101, 112, 0.25);
+  }
+
+  .persona + .persona {
+    margin-top: 48px;
+  }
+
+  .retrato {
+    width: 150px;
+    height: 188px;
+    --radio: 75px 75px 8px 8px;
+  }
+
+  .nombre {
+    font-size: 32px;
+  }
+
+  .descripcion {
+    font-size: 15px;
+  }
+}

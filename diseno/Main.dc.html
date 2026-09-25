@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Montserrat:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #f8f4f2; font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif; color: #3f3146; -webkit-font-smoothing: antialiased; }
+    a { color: #6b5278; text-decoration: none; } a:hover { color: #4a3852; }
+    h1, h2, h3 { margin: 0; font-weight: 400; }
+    p { margin: 0; }
+    .serif { font-family: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif; }
+    .caps { text-transform: uppercase; letter-spacing: 0.18em; font-weight: 500; }
+    .card { background: #fdfbfa; border: 1px solid #e8e0ea; }
+    .placeholder { background: linear-gradient(135deg, #ece5ee 0%, #d5cbd9 100%); color: #4a3852; display: flex; align-items: center; justify-content: center; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .input { height: 48px; padding: 0 14px; background: #fdfbfa; border: 1px solid #d8cddb; font-size: 14px; color: #7a6f80; display: flex; align-items: center; }
+
+    /* Movimiento */
+    .blob { position: absolute; border-radius: 999px; filter: blur(42px); opacity: 0.7; animation: flotar 14s ease-in-out infinite; }
+    .halo { position: absolute; inset: -14px; border-radius: 999px 999px 0 0; background: conic-gradient(from 0deg, transparent 0 60%, #d4b98c 78%, #e6dcea 88%, transparent 100%); animation: girar 16s linear infinite; }
+    .liquido { position: absolute; inset: 0; background: linear-gradient(160deg, #e6dcea 0%, #c9bfd1 38%, #9a85a8 70%, #6b5278 100%); background-size: 200% 200%; animation: marea 12s ease-in-out infinite; }
+    .gota { position: absolute; bottom: 12%; width: 10px; height: 14px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: rgba(253, 251, 250, 0.85); box-shadow: 0 0 12px rgba(253, 251, 250, 0.6); animation: subir 9s ease-in infinite; }
+    .rev { display: block; overflow: hidden; }
+    .rev > span { display: block; transform: translateY(110%); opacity: 0; animation: revelar 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+    .cinta { display: flex; gap: 40px; white-space: nowrap; animation: marquesina 26s linear infinite; }
+    .pulso { animation: latido 2.4s ease-out infinite; }
+    .linea-brillo { background: linear-gradient(90deg, #d4b98c 0%, #f3e6cf 50%, #d4b98c 100%); background-size: 200% 100%; animation: brillo 3.5s linear infinite; }
+
+    @keyframes flotar { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(24px, -36px) scale(1.12); } }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    @keyframes marea { 0%, 100% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } }
+    @keyframes subir { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 12% { opacity: 0.9; } 100% { transform: translateY(-240px) scale(1); opacity: 0; } }
+    @keyframes revelar { to { transform: translateY(0); opacity: 1; } }
+    @keyframes marquesina { to { transform: translateX(-50%); } }
+    @keyframes latido { 0% { box-shadow: 0 0 0 0 rgba(107, 82, 120, 0.45); } 100% { box-shadow: 0 0 0 18px rgba(107, 82, 120, 0); } }
+    @keyframes brillo { to { background-position: 200% 0; } }
+    @media (prefers-reduced-motion: reduce) { .blob, .halo, .liquido, .gota, .cinta, .pulso, .linea-brillo { animation: none; } .rev > span { transform: none; opacity: 1; animation: none; } }
+
+    /* Ventanas de parallax: fondo fijo que la página descubre al pasar (como universal-parallax), con deriva lenta al hacer scroll */
+    .ventana { position: relative; display: flex; align-items: center; justify-content: center; clip-path: inset(0); overflow: hidden; }
+    .fondo { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; }
+    .capa { position: absolute; left: 0; right: 0; top: 0; bottom: -360px; background-repeat: repeat; }
+    .capa-limpia { background-color: #f0d5c6; background-image: radial-gradient(ellipse at 30% 35%, rgba(255, 244, 234, 0.95) 0%, rgba(255, 244, 234, 0) 50%), radial-gradient(ellipse at 80% 78%, rgba(214, 170, 152, 0.6) 0%, rgba(214, 170, 152, 0) 55%), radial-gradient(circle, rgba(255, 255, 255, 0.32) 0 0.9px, transparent 1.9px); background-size: 100% 820px, 100% 820px, 13px 13px; }
+    .capa-hidratada { background-color: #c9bfd1; background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0 5px, rgba(255, 255, 255, 0.3) 6px, transparent 9px), radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.75) 0 3px, rgba(255, 255, 255, 0.2) 4px, transparent 6px), linear-gradient(160deg, #e6dcea 0%, #c9bfd1 40%, #a894b5 75%, #8a6f99 100%); background-size: 180px 260px, 130px 190px, 100% 820px; background-position: 0 0, 60px 90px, 0 0; animation: gotasSuben 16s linear infinite; }
+    .capa-luminosa { background-color: #6b5278; background-image: radial-gradient(ellipse at 50% 45%, rgba(212, 185, 140, 0.6) 0%, rgba(212, 185, 140, 0) 55%), radial-gradient(ellipse at 20% 80%, rgba(230, 220, 234, 0.45) 0%, rgba(230, 220, 234, 0) 50%), repeating-linear-gradient(-14deg, rgba(230, 220, 234, 0) 0 34px, rgba(230, 220, 234, 0.22) 35px 36px); background-size: 100% 820px, 100% 820px, auto; }
+    .panel { position: relative; z-index: 1; background: rgba(253, 251, 250, 0.86); backdrop-filter: blur(8px); border: 1px solid #d4b98c; display: flex; flex-direction: column; gap: 10px; text-align: center; }
+    .entra { animation-fill-mode: both; animation-timing-function: linear; }
+    .parallax-a, .parallax-b, .fondo { animation-fill-mode: both; animation-timing-function: linear; }
+    @supports (animation-timeline: view()) {
+      .entra { animation-name: entrar; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+      .parallax-a { animation-name: subirLento; animation-timeline: scroll(root); animation-range: 0 1200px; }
+      .parallax-b { animation-name: subirRapido; animation-timeline: scroll(root); animation-range: 0 1200px; }
+      .fondo { animation-name: derivar; animation-timeline: scroll(root); animation-range: 0 4000px; }
+    }
+    @keyframes entrar { from { transform: translateY(36px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes subirLento { from { transform: translateY(0); } to { transform: translateY(-90px); } }
+    @keyframes subirRapido { from { transform: translateY(0); } to { transform: translateY(-220px); } }
+    @keyframes derivar { from { transform: translateY(0); } to { transform: translateY(-340px); } }
+    @keyframes gotasSuben { from { background-position: 0 0, 60px 90px, 0 0; } to { background-position: 0 -520px, 60px -290px, 0 0; } }
+    @media (prefers-reduced-motion: reduce) { .entra, .parallax-a, .parallax-b, .fondo, .capa-hidratada { animation: none; } }
+  </style>
+</helmet>
+
+<div style="position: relative; width: 390px; min-height: 6200px; background: #f8f4f2;">
+
+  <!-- Cabecera -->
+  <header style="position: sticky; top: 0; z-index: 5; height: 60px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; background: rgba(248, 244, 242, 0.92); border-bottom: 1px solid #e8e0ea; backdrop-filter: blur(6px);">
+    <div class="serif" style="font-size: 22px; letter-spacing: 0.12em; color: #3f3146;">MYS <span style="color: #6b5278;">SPA</span></div>
+    <button aria-label="Abrir menú" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #3f3146;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </header>
+
+  <!-- Hero: arco con gradiente líquido, halo dorado y gotas -->
+  <section style="position: relative; height: 760px; background: #f3edf3; overflow: hidden;">
+    <div class="blob" style="width: 320px; height: 320px; top: -80px; left: -120px; background: #e6dcea;"></div>
+    <div class="blob" style="width: 260px; height: 260px; top: 120px; right: -110px; background: #f0e3d0; animation-delay: -6s;"></div>
+
+    <div class="parallax-b" style="position: absolute; top: 44px; left: 80px; width: 230px; height: 300px;">
+      <div class="halo"></div>
+      <div style="position: absolute; inset: 0; border-radius: 999px 999px 0 0; overflow: hidden; background: #c9bfd1;">
+        <div class="liquido"></div>
+        <div class="gota" style="left: 28%;"></div>
+        <div class="gota" style="left: 52%; animation-delay: -3s; width: 8px; height: 11px;"></div>
+        <div class="gota" style="left: 70%; animation-delay: -6s;"></div>
+        <div class="gota" style="left: 40%; animation-delay: -1.5s; width: 6px; height: 8px;"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(180deg, rgba(107, 82, 120, 0) 0%, rgba(74, 56, 82, 0.35) 100%);"></div>
+        <p class="serif" style="position: absolute; left: 0; right: 0; bottom: 22px; text-align: center; font-size: 13px; font-style: italic; letter-spacing: 0.08em; color: #fdfbfa;">[FOTO REAL AQUÍ]</p>
+      </div>
+    </div>
+
+    <div class="parallax-a" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 24px 36px; display: flex; flex-direction: column; gap: 16px;">
+      <p class="caps rev" style="font-size: 11px; color: #a3855a;"><span style="animation-delay: 0.1s;">Cosmetología · Estética</span></p>
+      <h1 class="serif" style="font-size: 44px; line-height: 1.02; color: #3f3146;">
+        <span class="rev"><span style="animation-delay: 0.25s;">Piel que</span></span>
+        <span class="rev"><span style="animation-delay: 0.4s; font-style: italic; color: #6b5278;">respira</span></span>
+        <span class="rev"><span style="animation-delay: 0.55s;">bienestar</span></span>
+      </h1>
+      <p class="rev" style="font-size: 15px; line-height: 1.55; font-weight: 300; color: #7a6f80; max-width: 320px;"><span style="animation-delay: 0.75s;">Limpiezas faciales, exfoliaciones y tratamientos con respaldo médico en [COMUNA].</span></p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 6px;">
+        <a href="#" class="caps" style="height: 52px; display: flex; align-items: center; justify-content: center; gap: 10px; background: #6b5278; color: #fdfbfa; font-size: 12px; border-radius: 999px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 18.9z"></path><path d="M9.5 9.5c.3 2 2 3.8 4 4.2l1.2-1.2 2 1c-.4 1.4-1.6 2-3 1.6a8 8 0 0 1-5-5c-.4-1.4.2-2.6 1.6-3l1 2z"></path></svg>
+          Reservar por WhatsApp
+        </a>
+        <a href="#servicios" class="caps" style="height: 44px; display: flex; align-items: center; justify-content: center; color: #6b5278; font-size: 11px; border: 1px solid #d4b98c; border-radius: 999px;">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón flotante con pulso -->
+  <a href="#" aria-label="Escribir por WhatsApp" class="pulso" style="position: absolute; top: 740px; right: 16px; width: 56px; height: 56px; border-radius: 999px; background: #6b5278; color: #fdfbfa; display: flex; align-items: center; justify-content: center; z-index: 6;">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 18.9z"></path><path d="M9.5 9.5c.3 2 2 3.8 4 4.2l1.2-1.2 2 1c-.4 1.4-1.6 2-3 1.6a8 8 0 0 1-5-5c-.4-1.4.2-2.6 1.6-3l1 2z"></path></svg>
+  </a>
+
+  <!-- Cinta en movimiento -->
+  <div style="height: 56px; overflow: hidden; border-top: 1px solid #e8e0ea; border-bottom: 1px solid #e8e0ea; background: #fdfbfa; display: flex; align-items: center;">
+    <div class="cinta serif" style="font-size: 20px; font-style: italic; color: #6b5278;">
+      <span>Limpieza facial</span><span style="color: #d4b98c;">·</span><span>Exfoliación</span><span style="color: #d4b98c;">·</span><span>Ácido hialurónico</span><span style="color: #d4b98c;">·</span><span>Peeling químico</span><span style="color: #d4b98c;">·</span>
+      <span>Limpieza facial</span><span style="color: #d4b98c;">·</span><span>Exfoliación</span><span style="color: #d4b98c;">·</span><span>Ácido hialurónico</span><span style="color: #d4b98c;">·</span><span>Peeling químico</span><span style="color: #d4b98c;">·</span>
+    </div>
+  </div>
+
+
+
+  <!-- Ventana 1: salud de la piel -->
+  <section class="ventana" style="height: 520px; padding: 0 24px;">
+    <div class="fondo" aria-hidden="true"><div class="capa capa-limpia"></div></div>
+    <div class="panel" style="width: 100%; max-width: 340px; padding: 28px 24px;">
+      <p class="caps" style="font-size: 10px; color: #a3855a;">Salud de la piel · 01</p>
+      <h2 class="serif" style="font-size: 36px; line-height: 1.05; color: #3f3146;">Limpia</h2>
+      <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">Una limpieza profunda es el punto de partida. Sin ella, ningún tratamiento rinde lo que debería.</p>
+      <p class="serif" style="font-size: 12px; font-style: italic; color: #9a8fa0; margin-top: 4px;">[FOTO DE FONDO: PIEL SANA, DE CERCA]</p>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" style="padding: 64px 20px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <p class="caps" style="font-size: 11px; color: #a3855a;">Servicios</p>
+      <h2 class="serif" style="font-size: 34px; line-height: 1.05; color: #3f3146;">Tratamientos con un objetivo claro</h2>
+      <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">Cada atención incluye evaluación previa. El ácido hialurónico lo aplica una médica. Reserva directo por WhatsApp.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <article class="card entra" style="animation-delay: 0s; padding: 22px 20px; display: flex; flex-direction: column; gap: 10px;">
+        <span class="serif" style="font-size: 13px; color: #d4b98c; letter-spacing: 0.1em;">01</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <h3 class="serif" style="font-size: 22px; color: #3f3146;">Limpieza facial profunda</h3>
+          <span class="serif" style="font-size: 18px; color: #6b5278; white-space: nowrap;">[PRECIO]</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; font-weight: 300; color: #7a6f80;">Extracción, hidratación y protección según tu tipo de piel.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; color: #9a8fa0;">[DURACIÓN]</span>
+          <a href="#" class="caps" style="min-height: 44px; display: flex; align-items: center; font-size: 11px; color: #6b5278;"><span style="border-bottom: 1px solid #d4b98c; padding-bottom: 2px;">Reservar</span></a>
+        </div>
+      </article>
+
+      <article class="card entra" style="animation-delay: 0.08s; padding: 22px 20px; display: flex; flex-direction: column; gap: 10px;">
+        <span class="serif" style="font-size: 13px; color: #d4b98c; letter-spacing: 0.1em;">02</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <h3 class="serif" style="font-size: 22px; color: #3f3146;">Exfoliación</h3>
+          <span class="serif" style="font-size: 18px; color: #6b5278; white-space: nowrap;">[PRECIO]</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; font-weight: 300; color: #7a6f80;">Retira células muertas y deja la piel lisa y receptiva a lo que viene después.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; color: #9a8fa0;">[DURACIÓN]</span>
+          <a href="#" class="caps" style="min-height: 44px; display: flex; align-items: center; font-size: 11px; color: #6b5278;"><span style="border-bottom: 1px solid #d4b98c; padding-bottom: 2px;">Reservar</span></a>
+        </div>
+      </article>
+
+      <article class="card entra" style="animation-delay: 0.16s; padding: 22px 20px; display: flex; flex-direction: column; gap: 10px;">
+        <span class="serif" style="font-size: 13px; color: #d4b98c; letter-spacing: 0.1em;">03</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <h3 class="serif" style="font-size: 22px; color: #3f3146;">Peeling químico</h3>
+          <span class="serif" style="font-size: 18px; color: #6b5278; white-space: nowrap;">[PRECIO]</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; font-weight: 300; color: #7a6f80;">Renueva la superficie de la piel y unifica el tono. Profundidad según evaluación previa.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; color: #9a8fa0;">[DURACIÓN]</span>
+          <a href="#" class="caps" style="min-height: 44px; display: flex; align-items: center; font-size: 11px; color: #6b5278;"><span style="border-bottom: 1px solid #d4b98c; padding-bottom: 2px;">Reservar</span></a>
+        </div>
+      </article>
+
+      <article class="card entra" style="animation-delay: 0.24s; padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; border-color: #d4b98c;">
+        <span class="serif" style="font-size: 13px; color: #d4b98c; letter-spacing: 0.1em;">04</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <h3 class="serif" style="font-size: 22px; color: #3f3146;">Ácido hialurónico</h3>
+          <span class="serif" style="font-size: 18px; color: #6b5278; white-space: nowrap;">[PRECIO]</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; font-weight: 300; color: #7a6f80;">Hidratación profunda y volumen natural. Lo realiza una médica.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="caps" style="font-size: 10px; color: #a3855a;">Procedimiento médico</span>
+          <a href="#" class="caps" style="min-height: 44px; display: flex; align-items: center; font-size: 11px; color: #6b5278;"><span style="border-bottom: 1px solid #d4b98c; padding-bottom: 2px;">Reservar</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- Ventana 2: salud de la piel -->
+  <section class="ventana" style="height: 520px; padding: 0 24px;">
+    <div class="fondo" aria-hidden="true"><div class="capa capa-hidratada"></div></div>
+    <div class="panel" style="width: 100%; max-width: 340px; padding: 28px 24px;">
+      <p class="caps" style="font-size: 10px; color: #a3855a;">Salud de la piel · 02</p>
+      <h2 class="serif" style="font-size: 36px; line-height: 1.05; color: #3f3146;">Hidratada</h2>
+      <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">La piel sana retiene agua. Hidratar bien es la diferencia entre cubrir y cuidar.</p>
+      <p class="serif" style="font-size: 12px; font-style: italic; color: #9a8fa0; margin-top: 4px;">[FOTO DE FONDO: PIEL SANA, DE CERCA]</p>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section style="position: relative; padding: 64px 20px; background: #4a3852; color: #fdfbfa; display: flex; flex-direction: column; gap: 24px; overflow: hidden;">
+    <div class="blob" style="width: 260px; height: 260px; top: -60px; right: -100px; background: #6b5278; opacity: 0.9;"></div>
+    <p class="caps" style="position: relative; font-size: 11px; color: #d4b98c;">Quién te atiende</p>
+    <div style="position: relative; display: flex; gap: 18px; align-items: center;">
+      <div class="placeholder" style="width: 96px; height: 120px; border-radius: 999px 999px 0 0; flex-shrink: 0; border: 1px solid #d4b98c;">Foto</div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h2 class="serif" style="font-size: 26px; line-height: 1.1;">Respaldo médico donde importa</h2>
+        <p style="font-size: 13px; color: #c9bfd1;">[NOMBRE Y REGISTRO DE LA MÉDICA, SI SE PUBLICA]</p>
+      </div>
+    </div>
+    <p style="position: relative; font-size: 15px; line-height: 1.6; font-weight: 300; color: #ece5ee; text-wrap: pretty;">El ácido hialurónico lo aplica una médica. Para todo lo demás, la evaluación previa define qué necesita tu piel y qué no.</p>
+    <div class="linea-brillo" style="position: relative; height: 1px; width: 120px;"></div>
+    <p style="position: relative; font-size: 13px; line-height: 1.6; font-weight: 300; color: #c9bfd1;">[UNA LÍNEA SOBRE LA COSMETÓLOGA O EL EQUIPO DE CABINA]</p>
+  </section>
+
+  <!-- Galería -->
+  <section style="padding: 64px 20px; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <p class="caps" style="font-size: 11px; color: #a3855a;">El espacio</p>
+      <h2 class="serif" style="font-size: 34px; line-height: 1.05;">Cabina, calma y detalle</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+      <div class="placeholder" style="aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0;">Cabina</div>
+      <div class="placeholder" style="aspect-ratio: 4 / 5; margin-top: 28px;">Recepción</div>
+      <div class="placeholder" style="aspect-ratio: 4 / 5;">Tratamiento</div>
+      <div class="placeholder" style="aspect-ratio: 4 / 5; margin-top: 28px; border-radius: 999px 999px 0 0;">Productos</div>
+    </div>
+    <a href="#" class="caps" style="min-height: 44px; font-size: 11px; color: #6b5278; display: flex; align-items: center; gap: 8px;">
+      Ver más en Instagram
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"></circle></svg>
+    </a>
+  </section>
+
+
+  <!-- Ventana 3: salud de la piel -->
+  <section class="ventana" style="height: 520px; padding: 0 24px;">
+    <div class="fondo" aria-hidden="true"><div class="capa capa-luminosa"></div></div>
+    <div class="panel" style="width: 100%; max-width: 340px; padding: 28px 24px;">
+      <p class="caps" style="font-size: 10px; color: #a3855a;">Salud de la piel · 03</p>
+      <h2 class="serif" style="font-size: 36px; line-height: 1.05; color: #3f3146;">Luminosa</h2>
+      <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">La luz propia no se maquilla: aparece cuando la piel está limpia, hidratada y en calma.</p>
+      <p class="serif" style="font-size: 12px; font-style: italic; color: #9a8fa0; margin-top: 4px;">[FOTO DE FONDO: PIEL SANA, DE CERCA]</p>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section style="padding: 64px 20px; background: #fdfbfa; border-top: 1px solid #e8e0ea; border-bottom: 1px solid #e8e0ea; display: flex; flex-direction: column; gap: 20px;">
+    <p class="caps" style="font-size: 11px; color: #a3855a;">Dónde estamos</p>
+    <h2 class="serif" style="font-size: 34px; line-height: 1.05;">[DIRECCIÓN]</h2>
+    <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">[COMUNA, CIUDAD]</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span class="caps" style="font-size: 10px; color: #9a8fa0;">Lunes a viernes</span>
+        <span style="font-size: 15px;">[HORARIO]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span class="caps" style="font-size: 10px; color: #9a8fa0;">Sábado</span>
+        <span style="font-size: 15px;">[HORARIO]</span>
+      </div>
+    </div>
+    <div class="placeholder" style="height: 180px;">Mapa</div>
+    <a href="#" class="caps" style="height: 48px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #6b5278; border: 1px solid #6b5278; border-radius: 999px;">Cómo llegar</a>
+  </section>
+
+  <!-- Contacto -->
+  <section style="padding: 64px 20px; display: flex; flex-direction: column; gap: 20px;">
+    <p class="caps" style="font-size: 11px; color: #a3855a;">Reserva tu hora</p>
+    <h2 class="serif" style="font-size: 34px; line-height: 1.05;">Cuéntanos qué necesitas</h2>
+    <p style="font-size: 14px; line-height: 1.6; font-weight: 300; color: #7a6f80;">Al enviar, se abre WhatsApp con tu mensaje listo. Respondemos en horario de atención.</p>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="input">Tu nombre</div>
+      <div class="input" style="justify-content: space-between;">
+        <span>Servicio</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+      <div class="input" style="height: 96px; align-items: flex-start; padding-top: 14px;">Mensaje (opcional)</div>
+      <a href="#" class="caps" style="height: 52px; display: flex; align-items: center; justify-content: center; gap: 10px; background: #6b5278; color: #fdfbfa; font-size: 12px; border-radius: 999px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 18.9z"></path><path d="M9.5 9.5c.3 2 2 3.8 4 4.2l1.2-1.2 2 1c-.4 1.4-1.6 2-3 1.6a8 8 0 0 1-5-5c-.4-1.4.2-2.6 1.6-3l1 2z"></path></svg>
+        Enviar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Pie -->
+  <footer style="padding: 40px 20px 48px; background: #4a3852; color: #c9bfd1; display: flex; flex-direction: column; gap: 14px;">
+    <div class="serif" style="font-size: 22px; letter-spacing: 0.12em; color: #fdfbfa;">MYS <span style="color: #d4b98c;">SPA</span></div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <a href="#" aria-label="Instagram" style="color: #ece5ee; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"></circle></svg></a>
+      <a href="#" aria-label="WhatsApp" style="color: #ece5ee; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 18.9z"></path><path d="M9.5 9.5c.3 2 2 3.8 4 4.2l1.2-1.2 2 1c-.4 1.4-1.6 2-3 1.6a8 8 0 0 1-5-5c-.4-1.4.2-2.6 1.6-3l1 2z"></path></svg></a>
+      <span style="font-size: 13px; color: #ece5ee;">[@INSTAGRAM]</span>
+    </div>
+    <p style="font-size: 12px; font-weight: 300;">[DIRECCIÓN] · [COMUNA]</p>
+    <p style="font-size: 11px; font-weight: 300; color: #9a8fa0;">© 2026 Mys Spa. Cosmetología y estética.</p>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

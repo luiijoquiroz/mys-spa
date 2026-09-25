@@ -1,0 +1,188 @@
+.tratamientos {
+  padding-block: 8px 72px;
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 0;
+  border-top: 1px solid var(--linea);
+}
+
+.fila:last-child {
+  border-bottom: 1px solid var(--linea);
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numero {
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: var(--mineral);
+}
+
+.medico {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--tinta-suave);
+  border: 1px solid var(--mineral-sub);
+  padding: 5px 10px;
+  border-radius: var(--radio-pildora);
+}
+
+.duracion {
+  font-size: 12px;
+  color: var(--gris-texto);
+}
+
+.duracionEscritorio {
+  display: none;
+}
+
+.nombre {
+  font-size: 30px;
+  line-height: 1.05;
+  color: var(--tinta);
+}
+
+.nombre em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.precio {
+  font-size: 22px;
+  color: var(--mineral-ink);
+}
+
+.reservar {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--mineral-ink);
+}
+
+@media (min-width: 1024px) {
+  .tratamientos {
+    padding-block: 0 120px;
+  }
+
+  .contenido {
+    max-width: none;
+    gap: 40px;
+  }
+
+  .cabecera {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .cabecera > :first-child {
+    max-width: 680px;
+  }
+
+  .nota {
+    max-width: 360px;
+  }
+
+  .fila {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1.2fr) minmax(0, 1fr) 140px 120px;
+    gap: 32px;
+    align-items: baseline;
+    padding: 30px 16px;
+    margin: 0 -16px;
+    transition: background 0.4s;
+  }
+
+  .fila:hover {
+    background: rgba(250, 250, 248, 0.8);
+  }
+
+  .encabezado {
+    display: contents;
+  }
+
+  .numero {
+    font-size: 18px;
+  }
+
+  .duracionMovil {
+    display: none;
+  }
+
+  .duracionEscritorio {
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* La píldora «médico» pasa bajo el nombre, en la misma celda. */
+  .medico {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    align-self: start;
+    margin-top: -12px;
+  }
+
+  .nombre {
+    font-size: 36px;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .descripcion {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 15px;
+  }
+
+  .pie {
+    display: contents;
+  }
+
+  .precio {
+    grid-column: 4;
+    grid-row: 1;
+    font-size: 26px;
+  }
+
+  .reservar {
+    grid-column: 5;
+    grid-row: 1;
+    justify-content: flex-end;
+  }
+}

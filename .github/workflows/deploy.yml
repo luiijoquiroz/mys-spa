@@ -1,0 +1,32 @@
+# Publica el sitio de Mys Spa. La infraestructura (bucket, CloudFront, WAF, rol) vive en
+# clients-iac/sites/mys-spa/prod; este workflow solo construye y sincroniza.
+#
+# PENDIENTE hasta que exista el root de Terraform aplicado (PLAN-DESARROLLO.md §7):
+#   - variable de repositorio AWS_DEPLOY_ROLE_ARN con el output github_deploy_role_arn
+#   - s3-bucket y cloudfront-distribution-id con los outputs del apply
+# Hasta entonces el workflow está limitado a workflow_dispatch para que no falle en cada push.
+name: deploy
+
+on:
+  workflow_dispatch:
+  # Activar cuando la infraestructura esté aplicada:
+  # push:
+  #   branches: [main]
+  # pull_request:
+  #   branches: [main]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  site:
+    uses: luiijoquiroz/gh-actions/.github/workflows/deploy-static-site.yaml@v2.0.1
+    with:
+      aws-role-arn: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+      s3-bucket: REEMPLAZAR-mys-spa-prod-site-448049794713
+      cloudfront-distribution-id: REEMPLAZAR

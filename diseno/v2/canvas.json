@@ -1,0 +1,140 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "DireccionA.dc.html": {
+      "h": 1320,
+      "page": "direcciones",
+      "radius": 16,
+      "title": "A · Editorial fresco",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "DireccionB.dc.html": {
+      "h": 1320,
+      "page": "direcciones",
+      "radius": 16,
+      "title": "B · Aurora suave",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "DireccionC.dc.html": {
+      "h": 1320,
+      "page": "direcciones",
+      "radius": 16,
+      "title": "C · Bento luminoso",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "Escritorio.dc.html": {
+      "expand": "fill",
+      "h": 7700,
+      "title": "Escritorio 1440",
+      "w": 1440,
+      "x": 470,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 7000,
+      "title": "Móvil 390",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-24T21:15:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "portada",
+    "view": "canvas"
+  },
+  "notes": {
+    "movimiento": {
+      "fill": "teal",
+      "text": "Parallax de hotel de lujo (para verlo, expande un marco y haz scroll)\n\nRegla: solo se mueven las fotos; el texto se queda quieto.\n• Hero a todo el ancho: la foto es un 40 % más alta que el marco y baja 130 px (móvil) / 180 px (escritorio) mientras la página sube. Se ve más lenta que el resto.\n• Tres franjas fotográficas entre secciones (cabina, salud de la piel, manifiesto): la imagen es un 30 % más alta que su franja y recorre un 14 % de su alto mientras la franja cruza la pantalla. Encima, una sola línea en serif itálica.\n• Dos planos en «El espacio»: la foto grande se mueve lento y la pequeña, superpuesta, va más rápido y en sentido contrario. Es el único momento de profundidad.\n• Entradas suaves de texto (16 px, desvanecido). Nada de cortinas, cintas, palabras gigantes ni escenas fijas.\n• Todo en CSS. Con «reducir movimiento», las fotos quedan quietas.\n• Firefox: sin animaciones ligadas al scroll; el sitio se ve igual, estático.",
+      "w": 420,
+      "x": 1990,
+      "y": 720
+    },
+    "fotos": {
+      "fill": "orange",
+      "text": "Fotos de referencia (Pexels, licencia libre; reemplazar por fotos propias)\n\n• Hero: sérum con gotario · pexels.com/photo/19242406\n• Franja «Cabina en calma»: cabina con arco iluminado · pexels.com/photo/11774389\n• Franja «Limpia, hidratada, luminosa»: tratamiento facial con aparatología · pexels.com/photo/5069612\n• Espacio, plano grande: toallas · pexels.com/photo/282892\n• Espacio, plano pequeño: manos con guantes · pexels.com/photo/14438367\n• Franja «Manifiesto»: gotas sobre la piel, blanco y negro · pexels.com/photo/21619652\n\nTodas llevan un velo azul mineral al 35 % y saturación al 72 % para que convivan con la paleta del manual. Con fotos propias en luz natural y tonos fríos, el velo se puede bajar o quitar.\n\nEncargo de fotos recomendado para el sitio real: cabina vacía con luz natural (horizontal), detalle de manos aplicando producto (horizontal), retrato de la doctora y de la cosmetóloga (vertical), textura de piel de cerca (horizontal), recepción o detalle del espacio (vertical).",
+      "w": 420,
+      "x": 1990,
+      "y": 1500
+    },
+    "nota-a": {
+      "fill": "green",
+      "page": "direcciones",
+      "text": "A · Editorial fresco\n\nReferentes: Typology, Minimale Skin, Rhode. La tendencia 2026 de «reducción deliberada»: un solo visual fuerte, una familia tipográfica bien usada y aire.\n• Paleta: blanco verdoso #F6F7F4, tinta #1E2B2F, salvia #A9C4B2 / #E3EDE6, verde profundo #3E6B5E para acentos.\n• Tipografía: Instrument Serif (titulares, itálica) + Manrope (texto). Titular a 132 px con letra apretada.\n• Foto en marco recto redondeado, desaturada y velada en salvia.\n• Movimiento: solo entradas suaves al cargar y hover. Nada al hacer scroll.\n• Se aleja del manual de Brivark en la paleta (salvia en vez de azul mineral); el logo se mantiene.",
+      "w": 640,
+      "x": 0,
+      "y": 1440
+    },
+    "nota-b": {
+      "fill": "teal",
+      "page": "direcciones",
+      "text": "B · Aurora suave\n\nReferentes: «Aurora UI» (fondos degradados que respiran) y vidrio esmerilado contenido, solo en navegación y tarjetas, que es donde la tendencia 2026 sobrevivió. Glow Recipe y Rhode en el tono «dewy».\n• Paleta: base #F3F7F6 con auroras menta #DDEFE8, celeste #E3ECF7, lila #F4EAF2 y durazno #FBEFE4; tinta #223338; verde agua profundo #2F6F6A para CTAs (4.7:1 sobre blanco).\n• Tipografía: Fraunces (serif blanda, eje óptico) + DM Sans.\n• Hero centrado, foto en forma orgánica, tarjetas de vidrio a los lados, tratamientos como chips.\n• Movimiento: el fondo respira muy lento (40 s), entradas suaves. Cero parallax.\n• Es la más «fresca» y la más cercana al azul mineral del manual (misma familia verde-azul, más clara).",
+      "w": 640,
+      "x": 1520,
+      "y": 1440
+    },
+    "nota-c": {
+      "fill": "gray",
+      "page": "direcciones",
+      "text": "C · Bento luminoso\n\nReferentes: la retícula bento, que según el balance de mitad de 2026 pasó a ser «el patrón por defecto» (Apple, Google, Spotify) y da más profundidad de scroll. Peachy Studio en precios transparentes.\n• Paleta: gris verdoso #F2F5F4, tarjetas blancas, tinta #1B2A2F, agua #BFE3DC / #DDEFE8, verde #2F6F6A.\n• Tipografía: Bricolage Grotesque (titulares) + Manrope.\n• Todo el primer pantallazo es una retícula de tarjetas: titular, foto, doctora, método, dirección, tratamientos con precio, Instagram. Muy útil si la mayoría llega desde Instagram y quiere precio y dirección en 5 segundos.\n• Movimiento: tarjetas que se elevan al pasar el cursor y entran en cascada. Nada al hacer scroll.\n• La más funcional; la menos «spa» de las tres.",
+      "w": 640,
+      "x": 3040,
+      "y": 1440
+    },
+    "supuestos": {
+      "fill": "blue",
+      "text": "Qué cambió y qué falta\n\n• Paleta del manual: azul mineral #7A9099, subtítulo #89A2AB, mármol #F0EFED / #E8E7E5. Para texto pequeño se usa un mineral más oscuro (#5B727C, #33474F) porque el #7A9099 no alcanza 4.5:1 sobre mármol.\n• Tipografías: el manual pide serif clásica + sans geométrica sin nombrarlas. Supuesto: Cormorant Garamond + Jost (Google Fonts). Se cambian en una línea.\n• Logo real del manual en el pie. Fotos de referencia de Pexels en el resto (ver nota naranja).\n• Dirección real: Luis Thayer Ojeda 157, Providencia (mismo edificio que Mía Spa; Metro Tobalaba, salida D). Horarios, WhatsApp, Instagram y precios siguen en [CORCHETES].\n• Dra. Camila Carrazco publicada con nombre; falta especialidad y N.º de registro.\n• Servicios: los 4 actuales. Ácido hialurónico marcado como procedimiento médico.\n• Manifiesto «La piel no se maquilla: se cuida»: voz de marca propuesta. Ajustar si la marca prefiere otro tono.\n• Tweak: color de acento (Tweaks del marco).",
+      "w": 420,
+      "x": 1990,
+      "y": 0
+    },
+    "titulo": {
+      "kind": "title1",
+      "maxW": 1910,
+      "text": "Mys Spa · Portada v3 — dirección spa (manual Brivark) con parallax fotográfico de hotel",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "titulo-direcciones": {
+      "kind": "title1",
+      "maxW": 4480,
+      "page": "direcciones",
+      "text": "Tres direcciones frescas exploradas el 24-09 (descartadas a favor de la dirección spa)",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Escritorio.dc.html",
+    "DireccionA.dc.html",
+    "DireccionB.dc.html",
+    "DireccionC.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "portada",
+      "name": "Portada v3 · spa con parallax"
+    },
+    {
+      "id": "direcciones",
+      "name": "Direcciones exploradas"
+    }
+  ],
+  "title": "Mys Spa · Portada v2"
+}

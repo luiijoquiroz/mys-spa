@@ -1,0 +1,39 @@
+.marco {
+  position: relative;
+  --radio: 999px 999px 8px 8px;
+}
+
+.arco {
+  --radio: 999px 999px 8px 8px;
+}
+
+.arco-suave {
+  --radio: 100px 100px 8px 8px;
+}
+
+.recto {
+  --radio: 8px;
+}
+
+.interior {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radio);
+  overflow: clip;
+  background: #dfe3e4;
+}
+
+.anillo {
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--mineral-sub);
+  border-radius: var(--radio);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .anillo {
+    inset: -18px;
+  }
+}

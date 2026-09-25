@@ -1,0 +1,34 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Móvil 390",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 6200,
+      "expand": "fill"
+    },
+    {
+      "file": "Escritorio.dc.html",
+      "title": "Escritorio 1440",
+      "x": 500,
+      "y": 0,
+      "w": 1440,
+      "h": 6300,
+      "expand": "fill"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "supuestos",
+      "x": 0,
+      "y": -520,
+      "w": 420,
+      "text": "Supuestos a validar\n\n• Nombre: Mys Spa (por la carpeta).\n• Paleta un tono más clara que el post: ciruela #4a3852, violeta #6b5278, lila #c9bfd1, champán #d4b98c, arena #f8f4f2. Bodoni Moda + Montserrat.\n• Servicios: limpieza facial, exfoliación, peeling químico y ácido hialurónico (este último con etiqueta de procedimiento médico). Sin nombres de profesionales; hay espacio para nombre y registro si se decide publicarlo.\n• Efectos al hacer scroll: para verlos, expande un marco (la vista completa no se desplaza). Tres ventanas de salud de la piel (Limpia, Hidratada, Luminosa) con fondo fijo que la página descubre al pasar, como en universal-parallax; parallax en el hero; tarjetas que entran escalonadas.\n• Sin foto: el arco del hero es un gradiente líquido animado. Ahí y en la sección de piel entran fotos reales cuando existan.\n• Todo lo que va entre [CORCHETES] es dato real pendiente."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

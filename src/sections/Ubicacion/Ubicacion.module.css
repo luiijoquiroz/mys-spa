@@ -1,0 +1,87 @@
+.ubicacion {
+  padding-block: 64px;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--linea-suave);
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.horarios {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--linea);
+  padding-top: 10px;
+}
+
+.dias {
+  font-size: 10px;
+  color: var(--gris-texto);
+}
+
+.horas {
+  margin: 0;
+  font-size: 20px;
+  color: var(--tinta);
+}
+
+.llegar {
+  width: 100%;
+}
+
+.mapa {
+  height: 200px;
+}
+
+@media (min-width: 1024px) {
+  .ubicacion {
+    padding-block: 112px;
+  }
+
+  .contenido {
+    max-width: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 96px;
+    align-items: center;
+  }
+
+  .texto {
+    gap: 24px;
+  }
+
+  .horarios {
+    max-width: 440px;
+    gap: 24px;
+  }
+
+  .horas {
+    font-size: 24px;
+  }
+
+  .llegar {
+    width: 220px;
+  }
+
+  .mapa {
+    height: 440px;
+    --radio: 220px 220px 12px 12px;
+  }
+}

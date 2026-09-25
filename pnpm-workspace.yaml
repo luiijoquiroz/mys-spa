@@ -1,0 +1,5 @@
+# pnpm 11 exige aprobar de forma explícita qué dependencias pueden ejecutar
+# scripts de instalación. esbuild es dependencia directa de Vite y su script
+# solo enlaza el binario de la plataforma: sin esto, `vite` no arranca.
+allowBuilds:
+  esbuild: true

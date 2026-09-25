@@ -1,0 +1,117 @@
+.pie {
+  position: relative;
+  padding: 56px var(--gutter);
+  background: var(--profundo);
+  color: var(--claro-3);
+}
+
+.contenido {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid var(--linea-oscura);
+}
+
+.nombres {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nombre {
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: var(--marmol);
+}
+
+.tagline {
+  font-size: 8px;
+  letter-spacing: 0.26em;
+  color: var(--claro-2);
+}
+
+.datos {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--claro);
+}
+
+.redes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.iconos {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.icono {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--marmol);
+}
+
+.icono:hover {
+  color: var(--claro-2);
+}
+
+.legal {
+  font-size: 11px;
+  color: var(--claro-2);
+}
+
+@media (min-width: 1024px) {
+  .pie {
+    padding-block: 72px;
+  }
+
+  .contenido {
+    max-width: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    align-items: center;
+  }
+
+  .logo {
+    width: 76px;
+    height: 76px;
+  }
+
+  .nombre {
+    font-size: 28px;
+    letter-spacing: 0.18em;
+  }
+
+  .datos {
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .redes {
+    align-items: flex-end;
+    text-align: right;
+  }
+}

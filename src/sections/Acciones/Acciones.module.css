@@ -1,0 +1,12 @@
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 28px 8px;
+}
+
+@media (min-width: 1024px) {
+  .acciones {
+    display: none;
+  }
+}

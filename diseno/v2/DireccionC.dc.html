@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dirección C · Bento luminoso</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=Manrope:wght@400;500;600&display=swap">
+<style>
+body { margin: 0; background: #F2F5F4; font-family: 'Manrope', 'Helvetica Neue', Arial, sans-serif; color: #1B2A2F; -webkit-font-smoothing: antialiased; }
+a { color: #1B2A2F; text-decoration: none; } a:hover { color: #2F6F6A; }
+h1, h2, h3, p { margin: 0; font-weight: 400; }
+.display { font-family: 'Bricolage Grotesque', 'Helvetica Neue', sans-serif; letter-spacing: -0.03em; }
+.caps { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+.tile { background: #FFFFFF; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; box-sizing: border-box; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s; }
+.tile:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(27, 42, 47, 0.35); }
+.pill { height: 52px; padding: 0 26px; display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; font-size: 15px; font-weight: 600; }
+.foto { filter: grayscale(0.6) brightness(1.08) contrast(0.96); }
+.velo { position: absolute; inset: 0; background: #BFE3DC; mix-blend-mode: soft-light; opacity: 0.9; }
+.entra { animation: entrar 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes entrar { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .entra, .tile { animation: none; transition: none; } }
+</style>
+</helmet>
+
+<div style="position: relative; width: 1440px; height: 1320px; background: #F2F5F4; display: flex; flex-direction: column; gap: 24px; padding: 24px 40px 40px; box-sizing: border-box;">
+
+  <!-- Cabecera -->
+  <header style="height: 64px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="#" style="display: flex; align-items: center; gap: 12px;">
+      <img src="/_blob/fca191d2427e1ba9bde882bdd7b49228" alt="" style="width: 40px; height: 40px; border-radius: 999px; object-fit: cover;">
+      <span class="display" style="font-size: 20px; font-weight: 600;">Mys Spa</span>
+    </a>
+    <nav aria-label="Secciones" style="display: flex; gap: 32px; font-size: 14px; font-weight: 600;">
+      <a href="#">Tratamientos</a><a href="#">Método</a><a href="#">Equipo</a><a href="#">Dónde</a>
+    </nav>
+    <a href="#" class="pill" style="height: 44px; background: #1B2A2F; color: #F2F5F4; font-size: 14px;">Reservar hora</a>
+  </header>
+
+  <!-- Bento -->
+  <section style="flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 380px 260px 300px; gap: 20px;">
+
+    <!-- Titular -->
+    <div class="tile entra" style="grid-column: span 7; background: #1B2A2F; color: #F2F5F4; padding: 40px;">
+      <p class="caps" style="color: #BFE3DC;">Estética facial · Providencia</p>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <h1 class="display" style="font-size: 84px; line-height: 0.94; font-weight: 500;">Piel clara, <span style="color: #BFE3DC; font-weight: 300;">sin vueltas.</span></h1>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="#" class="pill" style="background: #BFE3DC; color: #1B2A2F;">Reservar por WhatsApp</a>
+          <span style="font-size: 15px; color: #C9D6D9;">Evaluación previa incluida en cada atención.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Foto -->
+    <div class="tile entra" style="grid-column: span 5; padding: 0; overflow: clip; position: relative; background: #DDEFE8; animation-delay: 0.08s;">
+      <img class="foto" src="/_blob/ffaa103d62424d477ed57eff373b14b8" alt="Rostro con la piel fresca, de cerca" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%;">
+      <div class="velo"></div>
+    </div>
+
+    <!-- Doctora -->
+    <div class="tile entra" style="grid-column: span 4; animation-delay: 0.14s;">
+      <p class="caps" style="color: #2F6F6A;">Respaldo médico</p>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="width: 64px; height: 64px; border-radius: 999px; background: #DDEFE8; display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: 0.1em; color: #2F6F6A;">FOTO</div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <h2 class="display" style="font-size: 26px; font-weight: 600;">Dra. Camila Carrazco</h2>
+          <p style="font-size: 13px; color: #556468;">[ESPECIALIDAD · N.º REGISTRO]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Método -->
+    <div class="tile entra" style="grid-column: span 4; background: #DDEFE8; animation-delay: 0.2s;">
+      <p class="caps" style="color: #2F6F6A;">Cómo trabajamos</p>
+      <div style="display: flex; gap: 10px; align-items: center; font-size: 15px; font-weight: 600;">
+        <span style="padding: 10px 14px; background: #FFFFFF; border-radius: 999px;">Evaluación</span>
+        <span style="color: #2F6F6A;">→</span>
+        <span style="padding: 10px 14px; background: #FFFFFF; border-radius: 999px;">Tratamiento</span>
+        <span style="color: #2F6F6A;">→</span>
+        <span style="padding: 10px 14px; background: #FFFFFF; border-radius: 999px;">Casa</span>
+      </div>
+    </div>
+
+    <!-- Dónde -->
+    <div class="tile entra" style="grid-column: span 4; animation-delay: 0.26s;">
+      <p class="caps" style="color: #2F6F6A;">Dónde estamos</p>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h2 class="display" style="font-size: 28px; font-weight: 600; line-height: 1.05;">Luis Thayer Ojeda 157</h2>
+        <p style="font-size: 14px; color: #556468;">Providencia · Metro Tobalaba, salida D · [HORARIO]</p>
+      </div>
+    </div>
+
+    <!-- Tratamientos -->
+    <div class="tile entra" style="grid-column: span 8; animation-delay: 0.32s;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <p class="caps" style="color: #2F6F6A;">Tratamientos</p>
+        <p style="font-size: 13px; color: #556468;">Valores confirmados en la evaluación</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+        <a href="#" style="padding: 18px; background: #F2F5F4; border-radius: 18px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="display" style="font-size: 22px; font-weight: 600; line-height: 1.05;">Limpieza facial profunda</span>
+          <span style="font-size: 13px; color: #556468;">[PRECIO] · [DURACIÓN]</span>
+        </a>
+        <a href="#" style="padding: 18px; background: #F2F5F4; border-radius: 18px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="display" style="font-size: 22px; font-weight: 600; line-height: 1.05;">Exfoliación</span>
+          <span style="font-size: 13px; color: #556468;">[PRECIO] · [DURACIÓN]</span>
+        </a>
+        <a href="#" style="padding: 18px; background: #F2F5F4; border-radius: 18px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="display" style="font-size: 22px; font-weight: 600; line-height: 1.05;">Peeling químico</span>
+          <span style="font-size: 13px; color: #556468;">[PRECIO] · [DURACIÓN]</span>
+        </a>
+        <a href="#" style="padding: 18px; background: #1B2A2F; color: #F2F5F4; border-radius: 18px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="display" style="font-size: 22px; font-weight: 600; line-height: 1.05;">Ácido hialurónico</span>
+          <span style="font-size: 13px; color: #BFE3DC;">Procedimiento médico · [PRECIO]</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="tile entra" style="grid-column: span 4; background: #FFFFFF; animation-delay: 0.38s;">
+      <p class="caps" style="color: #2F6F6A;">Instagram</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+        <div style="aspect-ratio: 1; background: #DDEFE8; border-radius: 12px;"></div>
+        <div style="aspect-ratio: 1; background: #E3ECF7; border-radius: 12px;"></div>
+        <div style="aspect-ratio: 1; background: #F4EAF2; border-radius: 12px;"></div>
+      </div>
+      <a href="#" style="font-size: 14px; font-weight: 600; color: #2F6F6A;">[@INSTAGRAM] →</a>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

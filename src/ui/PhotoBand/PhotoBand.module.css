@@ -1,0 +1,69 @@
+.franja {
+  position: relative;
+  height: clamp(480px, 70svh, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--marmol);
+}
+
+.texto {
+  position: relative;
+  padding: 0 var(--gutter) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linea {
+  font-size: 40px;
+  line-height: 1;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.etiqueta {
+  font-size: 10px;
+  color: var(--claro);
+  order: -1;
+}
+
+.credito {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 239, 237, 0.7);
+}
+
+@media (min-width: 1024px) {
+  .franja {
+    height: clamp(560px, 75svh, 680px);
+  }
+
+  .texto {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 64px;
+  }
+
+  .linea {
+    font-size: 72px;
+    line-height: 0.95;
+    max-width: 900px;
+  }
+
+  .etiqueta {
+    font-size: 11px;
+    order: 0;
+  }
+
+  .credito {
+    right: 40px;
+    bottom: 24px;
+    font-size: 10px;
+  }
+}

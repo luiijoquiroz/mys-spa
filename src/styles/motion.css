@@ -1,0 +1,159 @@
+/* Movimiento del sitio. Regla del diseño aprobado: SOLO SE MUEVEN LAS FOTOS; el texto
+   se queda quieto. Todo es CSS ligado al scroll (animation-timeline). Sin soporte
+   (Firefox) el sitio se ve completo y quieto: el estado base es el estado final.
+
+   Cuidado: un ancestro con `overflow: hidden` crea un contenedor de scroll y
+   congela las animaciones con `view()`. Usar siempre `overflow: clip`. */
+
+/* Entrada al cargar: línea a línea (hero) y aparición retardada */
+.rev {
+  display: block;
+  overflow: clip;
+}
+
+.rev > span {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  animation: revelar 1s var(--suave) forwards;
+}
+
+.aparece {
+  opacity: 0;
+  animation: aparecer 1.2s 0.8s ease forwards;
+}
+
+@keyframes revelar {
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Parallax fotográfico */
+.lento,
+.rapido,
+.hero-foto,
+.entra,
+.progreso {
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+@supports (animation-timeline: view()) {
+  /* La foto es más alta que su marco y recorre un 14 % de su alto mientras el marco
+     cruza la pantalla: se ve más lenta que la página. */
+  .lento {
+    animation-name: lento;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+  }
+
+  /* El plano pequeño de «El espacio» va más rápido y en sentido contrario. */
+  .rapido {
+    animation-name: rapido;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+  }
+
+  /* La foto del hero baja mientras la página sube. */
+  .hero-foto {
+    animation-name: hero-foto;
+    animation-timeline: scroll(root);
+    animation-range: 0 700px;
+  }
+
+  /* Entrada suave de bloques de texto: 16 px y desvanecido. */
+  .entra {
+    animation-name: entrar;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+
+  /* Línea de progreso bajo la cabecera */
+  .progreso {
+    animation-name: progresar;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes lento {
+  from {
+    transform: translateY(-7%);
+  }
+  to {
+    transform: translateY(7%);
+  }
+}
+
+@keyframes rapido {
+  from {
+    transform: translateY(var(--rapido-recorrido, 44px));
+  }
+  to {
+    transform: translateY(calc(-1 * var(--rapido-recorrido, 44px)));
+  }
+}
+
+@keyframes hero-foto {
+  to {
+    transform: translateY(var(--hero-recorrido, 130px));
+  }
+}
+
+@keyframes entrar {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes progresar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --rapido-recorrido: 64px;
+    --hero-recorrido: 180px;
+  }
+
+  @supports (animation-timeline: view()) {
+    .hero-foto {
+      animation-range: 0 900px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rev > span,
+  .aparece {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  .lento,
+  .rapido,
+  .hero-foto,
+  .entra,
+  .progreso {
+    animation: none;
+  }
+
+  .progreso {
+    transform: none;
+  }
+}

@@ -1,0 +1,20 @@
+.marcador {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px;
+  color: var(--tinta-suave);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(160deg, var(--marmol-2), #d6dcdd);
+}
+
+.oscuro {
+  background: var(--tinta-suave);
+  color: var(--claro);
+  padding: 12px;
+}
